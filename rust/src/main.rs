@@ -1,3 +1,9 @@
+mod chunk;
+mod debug;
+
 fn main() {
-    println!("Hello, world!");
+    let mut chunk = chunk::Chunk::new();
+    chunk.write(chunk::opcode::RETURN);
+
+    chunk.disassemble("test code");
 }
