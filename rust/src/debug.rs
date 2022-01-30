@@ -11,7 +11,11 @@ impl Chunk {
     }
 
     fn disassemble_instruction(&self, offset: usize) -> usize {
-        print!("{:04} ", offset);
+        if offset > 0 && self.lines[offset] == self.lines[offset - 1] {
+            print!("{:04}    | ", offset);
+        } else {
+            print!("{:04} {:4} ", offset, self.lines[offset]);
+        }
 
         let inst = self.code[offset];
         match inst {

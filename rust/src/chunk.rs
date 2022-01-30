@@ -34,16 +34,22 @@ pub mod opcodes {
 
 pub struct Chunk {
     pub code: Vec<u8>,
+    pub lines: Vec<u32>,
     pub constants: Vec<value::value>,
 }
 
 impl Chunk {
     pub fn new() -> Chunk {
-        Chunk { code: vec![], constants: vec![], }
+        Chunk {
+            code: Vec::new(),
+            lines: Vec::new(),
+            constants: Vec::new(),
+        }
     }
 
-    pub fn write(&mut self, byte: u8) {
+    pub fn write(&mut self, byte: u8, line: u32) {
         self.code.push(byte);
+        self.lines.push(line);
     }
 
     pub fn add_constant(&mut self, v: value::value) -> usize {
