@@ -10,7 +10,7 @@ impl Chunk {
         }
     }
 
-    fn disassemble_instruction(&self, offset: usize) -> usize {
+    pub fn disassemble_instruction(&self, offset: usize) -> usize {
         if offset > 0 && self.lines[offset] == self.lines[offset - 1] {
             print!("{:04}    | ", offset);
         } else {
@@ -22,6 +22,21 @@ impl Chunk {
             opcodes::CONSTANT => {
                 constant_instruction("OP_CONSTANT", self, offset)
             }
+            opcodes::ADD => {
+                simple_instruction("OP_ADD", offset)
+            },
+            opcodes::SUBTRACT => {
+                simple_instruction("OP_SUBTRACT", offset)
+            },
+            opcodes::MULTIPLY => {
+                simple_instruction("OP_MULTIPLY", offset)
+            },
+            opcodes::DIVIDE => {
+                simple_instruction("OP_DIVIDE", offset)
+            },
+            opcodes::NEGATE => {
+                simple_instruction("OP_NEGATE", offset)
+            },
             opcodes::RETURN => {
                 simple_instruction("OP_RETURN", offset)
             },

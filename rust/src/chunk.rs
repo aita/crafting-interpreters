@@ -17,6 +17,11 @@ pub mod opcodes {
 
     opcodes!(
         CONSTANT,
+        ADD,
+        SUBTRACT,
+        MULTIPLY,
+        DIVIDE,
+        NEGATE,
         RETURN
     );
 
