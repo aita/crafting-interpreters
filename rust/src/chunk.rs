@@ -24,17 +24,6 @@ pub mod opcodes {
         NEGATE,
         RETURN
     );
-
-    #[cfg(test)]
-    mod tests {
-        use super::*;
-
-        #[test]
-        fn test_opcodes() {
-            assert_eq!(CONSTANT, 0x00);
-            assert_eq!(RETURN, 0x01);
-        }
-    }
 }
 
 pub struct Chunk {
