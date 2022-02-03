@@ -1,4 +1,4 @@
-use crate::value;
+use crate::value::Value;
 
 pub mod opcodes {
     macro_rules! opcodes {
@@ -29,7 +29,7 @@ pub mod opcodes {
 pub struct Chunk {
     pub code: Vec<u8>,
     pub lines: Vec<u32>,
-    pub constants: Vec<value::value>,
+    pub constants: Vec<Value>,
 }
 
 impl Chunk {
@@ -46,7 +46,7 @@ impl Chunk {
         self.lines.push(line);
     }
 
-    pub fn add_constant(&mut self, v: value::value) -> usize {
+    pub fn add_constant(&mut self, v: Value) -> usize {
         self.constants.push(v);
         self.constants.len() - 1
     }

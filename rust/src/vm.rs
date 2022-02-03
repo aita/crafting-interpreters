@@ -1,12 +1,12 @@
 use crate::chunk::{Chunk, opcodes};
-use crate::value;
+use crate::value::Value;
 
 pub const STACK_MAX:usize = 256;
 
 pub struct VM {
     pub chunk: Chunk,
     pub ip: usize,
-    pub stack: Vec<value::value>,
+    pub stack: Vec<Value>,
     trace: bool,
 }
 
@@ -27,11 +27,11 @@ impl VM {
         }
     }
 
-    pub fn push(&mut self, value: value::value) {
+    pub fn push(&mut self, value: Value) {
         self.stack.push(value);
     }
 
-    pub fn pop(&mut self) -> value::value {
+    pub fn pop(&mut self) -> Value {
         self.stack.pop().unwrap()
     }
 
@@ -49,7 +49,7 @@ impl VM {
     }
 
     #[inline(always)]
-    fn binary_op(&mut self, op: fn(value::value, value::value) -> value::value) {
+    fn binary_op(&mut self, op: fn(Value, Value) -> Value) {
         let b = self.pop();
         let a = self.pop();
         self.push(op(a, b));

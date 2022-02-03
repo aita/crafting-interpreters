@@ -1,1 +1,1 @@
-pub type value = f64;
+pub type Value = f64;
