@@ -13,6 +13,7 @@
     "variant": "c",
     "object.h": "c",
     "value.h": "c",
-    "table.h": "c"
+    "table.h": "c",
+    "string": "c"
   }
 }
