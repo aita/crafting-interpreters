@@ -12,6 +12,7 @@
     "utility": "c",
     "variant": "c",
     "object.h": "c",
-    "value.h": "c"
+    "value.h": "c",
+    "table.h": "c"
   }
 }
